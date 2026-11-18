@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://hseplatform.fr/blog/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -38,6 +38,16 @@
   <url>
     <loc>https://hseplatform.fr/blog/glossaire-accueil-securite.html</loc>
     <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hseplatform.fr/blog/accueil-securite-no-code-flexio-power-apps-appsheet.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hseplatform.fr/blog/accueil-securite-donnees-hebergement-france-cloud-act.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
