@@ -140,6 +140,11 @@
   <li><strong>Des informations sur votre site</strong> : plans, cheminements, zones à risques, consignes d'urgence, parfois des éléments sensibles pour un site <a href="sites-seveso-bilan-inspection-2025.html">Seveso</a>. Ce ne sont pas des données personnelles, mais vous n'avez pas envie qu'elles circulent n'importe où.</li>
 </ul>
 <p>Choisir un outil, c'est donc aussi choisir où ces données sont stockées, et sous quel droit.</p>
+<figure class="fig" aria-label="Schéma : le chemin de vos données">
+  <div class="fig-t">Le chemin de vos données, et la question à poser à chaque étape</div>
+  <ol class="flow"><li><span class="n">1</span>Votre site<span class="sub">collaborateurs internes et externes</span></li><li><span class="n">2</span>L'éditeur du logiciel<span class="sub">siège et maison mère ?</span></li><li><span class="n">3</span>L'hébergeur<span class="sub">pays des serveurs ?</span></li><li><span class="n">4</span>Les sous-traitants<span class="sub">e-mail, support : quels pays ?</span></li></ol>
+  <figcaption>À chaque étape, le droit applicable peut changer : c'est l'ensemble de la chaîne qu'il faut vérifier, pas seulement l'emplacement du serveur.</figcaption>
+</figure>
 
 <h2 id="cloud-act">Hébergé en Europe ne veut pas dire hors de portée</h2>
 <p>Le Cloud Act, une loi américaine de 2018, permet aux autorités des États-Unis de demander à un fournisseur soumis à leur droit les données qu'il détient, y compris quand elles sont stockées hors des États-Unis. Un serveur situé en Europe ne suffit donc pas : ce qui compte, c'est aussi la nationalité du fournisseur et de sa maison mère.</p>
@@ -151,6 +156,22 @@
 <p>Le Cloud Act reste un risque rare. La panne, elle, arrive. Selon Microsoft, celle de novembre 2026 venait d'une modification de son infrastructure réseau : des serveurs gérant les connexions à Exchange Online sont devenus indisponibles et ont surchargé les autres, jusqu'à perturber la quasi-totalité de Microsoft 365. Aucune cyberattaque n'est en cause.</p>
 <p>Pour un accueil sécurité, la leçon est simple. Si votre processus repose entièrement sur la suite bureautique de l'entreprise, par exemple un formulaire Microsoft Forms, un flux Power Automate et un registre dans Excel ou SharePoint, une panne de cette suite rend le poste de garde aveugle : plus d'invitations, plus de registre, plus de vérification.</p>
 <p>Aucun hébergeur n'est à l'abri d'un incident, y compris en France : l'incendie d'un datacenter OVHcloud à Strasbourg, en mars 2021, l'a rappelé. La bonne réponse n'est donc pas « un fournisseur qui ne tombe jamais », mais des outils qui ne dépendent pas tous du même point de défaillance, et un mode dégradé prévu à l'avance.</p>
+<figure class="fig" aria-label="Schéma : point de défaillance unique">
+  <div class="spof">
+    <div class="spof-c">
+      <h4>Accueil construit dans la suite bureautique</h4>
+      <div class="spof-box hot"><b>Une seule suite</b><span>Formulaire d'accueil</span><span>Automatisations</span><span>Registre (tableur)</span><span>Messagerie</span></div>
+      <p>Si la suite tombe, tout tombe en même temps : plus d'invitations, plus de registre, plus de vérification à la grille.</p>
+    </div>
+    <div class="spof-c">
+      <h4>Outil d'accueil séparé</h4>
+      <div class="spof-box ok"><b>Outil d'accueil</b><span>Formation, certificats</span><span>Écran Poste de sécurité</span></div>
+      <div class="spof-box"><b>Suite bureautique</b><span>Messagerie, documents</span></div>
+      <p>Si la messagerie tombe, la grille vérifie toujours. Et un export hors ligne reste le filet de sécurité si l'outil lui-même est indisponible.</p>
+    </div>
+  </div>
+  <figcaption>Ne pas mettre tous les maillons de l'accueil derrière le même point de défaillance.</figcaption>
+</figure>
 
 <h2 id="questions">8 questions à poser à votre fournisseur</h2>
 <ol class="steps">
