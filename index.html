@@ -876,6 +876,42 @@ svg.mk{fill:currentColor !important;stroke:none !important}
 #h-cert{left:300px!important;top:0!important}
 @media (min-width:1101px){.hero .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1320px}.hero-stage{margin-right:-140px;height:600px}}
 @media (prefers-reduced-motion:reduce){.chips2{opacity:1;animation:none}}
+
+/* ── AMBIANCE CHALEUREUSE + PHOTOS TERRAIN (23/11/2026) ── */
+:root{--off:#f4efe7;--off-2:#e8e1d6;--line:#e7e0d5;--line-2:#d8cfc1}
+.sw{background:#fbf8f3}.sw.alt{background:#f4efe7}
+.logos-band{background:#f4efe7}
+.terrain{position:relative;min-height:540px;display:flex;align-items:center;padding:90px 64px;color:#fff;background:#151921 url(img/atelier.jpg) center/cover no-repeat;overflow:hidden}
+.terrain::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,31,73,.94) 0%,rgba(6,31,73,.78) 45%,rgba(6,31,73,.2) 100%)}
+.terrain::after{content:'';position:absolute;inset:0;background:#0b3875;mix-blend-mode:color;opacity:.55;pointer-events:none}
+.terrain .in{z-index:1}
+.terrain .in{position:relative;max-width:1200px;margin:0 auto;width:100%}
+.terrain .eyebrow{color:var(--blue-2)}
+.terrain h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.1;max-width:17ch;margin-bottom:22px}
+.terrain h2 em{font-style:normal;color:var(--blue-2)}
+.terrain p{max-width:52ch;font-size:17px;line-height:1.7;color:rgba(255,255,255,.82)}
+.terrain .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.terrain .tags span{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);font-size:13px;background:rgba(255,255,255,.06)}
+.pphoto{position:relative;border-radius:18px;overflow:hidden;margin-bottom:20px;aspect-ratio:16/10;box-shadow:0 20px 50px rgba(40,30,10,.18)}
+.pphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.pphoto figcaption{position:absolute;left:16px;bottom:16px;right:16px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.94);font-size:14px;color:var(--ink);display:flex;gap:10px;align-items:center}
+.pphoto figcaption b{font-family:var(--display-2);font-weight:400;color:var(--blue-3)}
+.cbl-photos{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;margin-top:44px}
+.cbl-photos figure{position:relative;border-radius:18px;overflow:hidden;height:300px}
+.cbl-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.cbl-photos figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(14,17,24,.85));color:#fff;font-family:var(--display-2);font-size:18px}
+.cbl-photos figcaption small{display:block;font-family:var(--ui);font-size:13.5px;color:rgba(255,255,255,.8);margin-top:4px}
+
+.tD::after{display:none}
+.tD::before{background:linear-gradient(90deg,rgba(6,31,73,.97) 0%,rgba(6,31,73,.88) 38%,rgba(6,31,73,.25) 70%,rgba(6,31,73,0) 100%)}
+
+.pphoto img{object-position:60% 50%}
+@media (max-width:900px){
+  .terrain{min-height:0;padding:72px 24px;background-position:70% center}
+  .terrain::before{background:linear-gradient(180deg,rgba(6,31,73,.92) 0%,rgba(6,31,73,.85) 60%,rgba(6,31,73,.6) 100%)!important}
+  .cbl-photos{grid-template-columns:1fr}
+  .cbl-photos figure{height:240px}
+}
 </style>
 </head>
 <body>
@@ -984,6 +1020,11 @@ svg.mk{fill:currentColor !important;stroke:none !important}
   </div>
 </div>
 
+<section class="terrain tD"><div class="in"><span class="eyebrow">Sur le terrain</span>
+    <h2>Chaque matin, des personnes entrent sur votre site <em>sans en connaître les risques.</em></h2>
+    <p>Nouveaux embauchés, sous-traitants, chauffeurs, visiteurs : HSEPlatform leur transmet vos consignes avant qu’ils passent la grille, et vous garde la preuve qu’ils les ont comprises.</p>
+    <div class="tags"><span>Chimie</span><span>Agroalimentaire</span><span>Énergie</span><span>Logistique</span><span>Pharmaceutique</span></div></div></section>
+
 <!-- ONBOARDING DES NOUVEAUX COLLABORATEURS -->
 <section class="sw dk onb" id="onboarding">
   <div class="si">
@@ -1017,6 +1058,7 @@ svg.mk{fill:currentColor !important;stroke:none !important}
         <div class="prob-card r d3"><div class="pc-icon">⚖️</div><div><div class="pc-title">Risque juridique réel</div><div class="pc-desc">En cas d'accident ou de contrôle, c'est à vous de prouver que chaque intervenant a été formé. Sans traçabilité, cette preuve manque.</div><span class="pc-tag">Art. L4121-1</span></div></div>
       </div>
       <div class="prob-right rr">
+        <figure class="pphoto"><img loading="lazy" decoding="async" src="img/intervenants.jpg" alt="Intervenants extérieurs casqués sur un site industriel"><figcaption><b>Chaque semaine</b>de nouveaux intervenants extérieurs à accueillir et à former.</figcaption></figure>
         <div class="prob-stat">
           <div class="ps-n" id="psn">0<span>%</span></div>
           <div class="ps-lbl">des accidents du travail impliquant des prestataires extérieurs surviennent dans les 6 premiers mois, souvent faute d'un accueil sécurité structuré.</div>
@@ -1047,6 +1089,10 @@ svg.mk{fill:currentColor !important;stroke:none !important}
     <div class="eyebrow r">Pour qui ?</div>
     <h2 class="sec-title r d1">Un accueil sécurité pour <em>chaque profil</em> qui entre sur votre site.</h2>
     <p class="sec-body r d2" style="max-width:660px">Du nouvel embauché au visiteur de passage, toute personne présente sur votre site relève de votre responsabilité. HSEPlatform les forme tous, en amont, avec la même traçabilité.</p>
+    <div class="cbl-photos">
+      <figure><img loading="lazy" decoding="async" src="img/hauteur.jpg" alt="Intervenant équipé de ses EPI sur un échafaudage"><figcaption>Intervenants extérieurs<small>Formés à vos consignes avant leur premier jour sur site.</small></figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="img/magasin.jpg" alt="Collaborateur casqué dans un magasin de pièces"><figcaption>Nouveaux collaborateurs<small>Accueil sécurité puis fiche d’arrivée suivie par chaque intervenant.</small></figcaption></figure>
+    </div>
     <div class="cbl-grid">
       <div class="cbl r d1">
         <div class="cbl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2.5 21c0-3.8 3-6 6.5-6 1.5 0 2.9.4 4 1"/><path d="M18 13v6M15 16h6"/></svg></div>
@@ -1060,7 +1106,7 @@ svg.mk{fill:currentColor !important;stroke:none !important}
       </div>
       <div class="cbl r d3">
         <div class="cbl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2.5 21c0-3.8 3-6 6.5-6"/><circle cx="17.5" cy="16" r="4"/><path d="M17.5 14.4V16l1.1 1"/></svg></div>
-        <div class="cbl-t">Intérimaires</div>
+        <div class="cbl-t">Collaborateurs externes en mission</div>
         <div class="cbl-d">Formés en amont, via l'agence d'intérim ou en autonomie.</div>
       </div>
       <div class="cbl r d1">
