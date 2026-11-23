@@ -298,35 +298,107 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue-2);outline-off
 .scroll-cue{position:absolute;left:50%;bottom:18px;z-index:2;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--display-2);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-ink-3)}
 .scroll-cue i{width:1px;height:34px;background:linear-gradient(var(--blue-2),transparent)}
 
-/* ── PARCOURS 3D (section épinglée) ── */
-.journey{position:relative;overflow:hidden;background:var(--off);color:var(--text);background-image:linear-gradient(rgba(21,25,33,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,33,.06) 1px,transparent 1px);background-size:80px 80px}
+/* ── PARCOURS (lecteur à onglets, défilement libre) ── */
+.journey{position:relative;overflow:hidden;padding:96px 32px 80px;background:var(--off);color:var(--text);background-image:linear-gradient(rgba(21,25,33,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,33,.05) 1px,transparent 1px);background-size:80px 80px}
 .journey .glow{position:absolute;z-index:0;pointer-events:none;border-radius:50%;filter:blur(60px)}
-.journey .g1{width:700px;height:700px;right:-200px;top:-200px;background:radial-gradient(circle,rgba(83,131,229,.35),transparent 65%)}
-.journey .g2{width:600px;height:600px;left:-250px;bottom:-250px;background:radial-gradient(circle,rgba(21,25,33,.25),transparent 65%)}
-.j-inner{position:relative;z-index:1;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);gap:32px;align-items:center;max-width:1280px;margin:0 auto;padding:90px 32px 24px}
-.j-left{display:grid;grid-template-columns:28px 1fr;gap:18px;align-items:start;min-width:0}
-.rail{position:relative;width:28px;height:420px}
-.rail .line{position:absolute;left:13px;top:12px;width:2px;height:396px;background:var(--line-2)}
-.rail .fill{position:absolute;left:13px;top:12px;width:2px;height:396px;background:var(--blue);transform-origin:0 0;transform:scaleY(0)}
-.rail .dot{position:absolute;left:4px;width:20px;height:20px;border-radius:50%;background:var(--white);border:2px solid var(--line-2);display:grid;place-items:center;font-family:var(--display-2);font-size:10px;color:var(--text-3)}
-.rail .dot.on{border-color:var(--blue);background:var(--blue);color:#fff}
-.j-text{position:relative;height:420px;min-width:0}
-.step{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden}
+.journey .g1{width:700px;height:700px;right:-200px;top:-200px;background:radial-gradient(circle,rgba(83,131,229,.30),transparent 65%)}
+.journey .g2{width:600px;height:600px;left:-250px;bottom:-250px;background:radial-gradient(circle,rgba(21,25,33,.18),transparent 65%)}
+.j-wrap{position:relative;z-index:1;max-width:1360px;margin:0 auto}
+.j-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:26px}
+.j-head .eyebrow{color:var(--blue-3);margin-bottom:14px}
+.j-head .sec-title{margin:0}
+.j-play{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);background:#fff;font:400 13px var(--display-2);color:var(--ink);cursor:pointer;flex:none;transition:border-color .2s,box-shadow .2s}
+.j-play:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(47,95,192,.15)}
+.j-play svg{width:12px;height:12px;fill:currentColor}
+.j-play .i-play{display:none}.j-play.paused .i-play{display:block}.j-play.paused .i-pause{display:none}
+.j-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:30px}
+.j-tab{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px 20px;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.72);text-align:left;cursor:pointer;font:inherit;color:var(--text-2);transition:background .25s,border-color .25s,box-shadow .25s;min-width:0}
+.j-tab:hover{background:#fff}
+.j-tab i{font-style:normal;flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line-2);font:400 12px var(--display-2);color:var(--text-3);background:#fff;transition:all .25s}
+.j-tab span{display:flex;flex-direction:column;min-width:0;font-size:14.5px;line-height:1.3;color:var(--ink);font-weight:400}
+.j-tab span b{font:400 11px var(--display-2);letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.j-tab s{position:absolute;left:16px;right:16px;bottom:9px;height:3px;border-radius:2px;background:var(--off-2);text-decoration:none;overflow:hidden}
+.j-tab s u{display:block;height:100%;width:0;background:var(--blue);border-radius:2px;text-decoration:none}
+.j-tab.on{background:#fff;border-color:var(--blue);box-shadow:0 14px 40px rgba(47,95,192,.14)}
+.j-tab.on i,.j-tab.done i{background:var(--blue);border-color:var(--blue);color:#fff}
+.j-main{display:grid;grid-template-columns:minmax(280px,330px) minmax(0,1fr);gap:44px;align-items:center}
+.j-text{display:grid;min-width:0}
+.step{grid-area:1/1;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden;align-self:center}
 .step:first-child{opacity:1;visibility:visible}
 .chip{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;padding:8px 14px 8px 12px;background:var(--ink);color:#fff;border-radius:8px;border-left:4px solid var(--blue)}
 .chip b{font-family:var(--display-2);font-weight:400;font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .chip span{font-size:13px;color:var(--on-ink-2)}
-.step h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.8vw,38px);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+.step h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.5vw,36px);line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
 .step h2 em{font-style:normal;color:var(--blue-3)}
 .step p{color:var(--text-2);font-size:16px;max-width:46ch;line-height:1.65}
-.step .kpi{display:flex;gap:14px;align-items:baseline;margin-top:4px}
-.step .kpi b{font-family:var(--display-2);font-weight:400;font-size:48px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.step .kpi{display:flex;gap:14px;align-items:baseline;margin-top:4px;padding-top:16px;border-top:1px solid var(--line-2)}
+.step .kpi b{font-family:var(--display-2);font-weight:400;font-size:42px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .step .kpi span{font-size:14px;color:var(--text-3);max-width:24ch;line-height:1.4}
-.j-stage{position:relative;height:640px;min-width:0}
+.j-stage{position:relative;height:clamp(340px,calc(100vh - 300px),640px);height:clamp(340px,calc(100svh - 300px),640px);min-width:0}
 .j-box{position:absolute;left:0;top:0;width:1000px;height:640px;transform-origin:0 0;perspective:2000px}
 .layer{position:absolute;inset:0;transform-style:preserve-3d;opacity:0;visibility:hidden}
 .layer:first-child{opacity:1;visibility:visible}
-.layer .app{box-shadow:0 40px 90px rgba(10,20,40,.35),0 0 0 1px rgba(0,0,0,.08)}
+.layer .app{box-shadow:0 30px 70px rgba(10,20,40,.28),0 0 0 1px rgba(0,0,0,.08)}
+
+/* ── ONBOARDING DES NOUVEAUX COLLABORATEURS ── */
+.onb .onb-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:end;margin-bottom:44px}
+.onb .onb-head .sec-title{margin:0}
+.onb .onb-head .sec-body{margin:0;max-width:none}
+.onb .eyebrow .new{display:inline-block;margin-right:10px;padding:3px 8px;border-radius:5px;background:var(--blue);color:#fff;letter-spacing:.1em}
+.onb-stage{position:relative;max-width:1180px;margin:0 auto;aspect-ratio:1100/680}
+.onb-box{position:absolute;left:0;top:0;width:1100px;height:680px;transform-origin:0 0}
+.onb-box .app{position:absolute;left:0;top:0;box-shadow:0 50px 120px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.onb-feats{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:48px auto 0;max-width:1180px;counter-reset:onb}
+.onb-feats li{counter-increment:onb;padding:20px 20px 22px;border:1px solid var(--line-dk);border-radius:14px;background:rgba(255,255,255,.03)}
+.onb-feats li::before{content:counter(onb,decimal-leading-zero);display:block;font:400 12px var(--display-2);letter-spacing:.12em;color:var(--blue-2);margin-bottom:12px}
+.onb-feats b{display:block;font:400 18px/1.2 var(--display-2);color:#fff;margin-bottom:8px}
+.onb-feats p{font-size:14.5px;line-height:1.6;color:var(--on-ink-2)}
+.onb-cta{display:flex;justify-content:center;margin-top:40px}
+/* écran « fiche d'arrivée » */
+.ob{display:grid;grid-template-columns:240px minmax(0,1fr);gap:16px;min-height:0;flex:1}
+.ob>*{min-width:0}
+.ob-list{padding:14px 0 6px;display:flex;flex-direction:column}
+.ob-list .ct{padding:0 16px;margin-bottom:10px}
+.ob-filt{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px;border-bottom:1px solid var(--app-line)}
+.ob-filt span{font-size:11.5px;padding:3px 8px;border-radius:999px;background:#f1f3f6;color:var(--app-mute);white-space:nowrap}
+.ob-filt span.on{background:var(--ink);color:#fff}
+.ob-it{display:flex;flex-direction:column;gap:5px;padding:11px 16px;border-bottom:1px solid var(--app-line);border-left:3px solid transparent;font-size:13px}
+.ob-it.on{background:#f4f7fd;border-left-color:var(--blue)}
+.ob-it strong{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:500}
+.ob-it small{color:var(--app-mute);font-size:12px}
+.ob-it .pill{font-size:11px;padding:2px 8px}
+.ob-det{padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.ob-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ob-top strong{display:block;font:400 20px/1.1 var(--display-2)}
+.ob-top small{display:block;margin-top:5px;color:var(--app-mute);font-size:12.5px}
+.ob-prog{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--app-mute)}
+.ob-prog .bar{flex:1;height:8px;border-radius:999px;background:#edf0f4;overflow:hidden}
+.ob-prog .bar i{display:block;height:100%;width:25%;background:var(--green);border-radius:999px}
+.ob-prog b{font-weight:500;color:var(--app-ink);white-space:nowrap}
+.ob-part{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:start;padding:10px 12px;border:1px solid var(--app-line);border-radius:10px;background:#fff}
+.ob-part .ck{width:24px;height:24px;border-radius:50%;border:2px solid #cfd5dd;display:grid;place-items:center;color:#fff;background:#fff}
+.ob-part .ck svg{width:13px;height:13px;stroke-width:2.6;opacity:0}
+.ob-part.ok .ck{background:var(--green);border-color:var(--green)}
+.ob-part.ok .ck svg{opacity:1}
+.ob-part.cur{border-color:var(--blue);box-shadow:0 0 0 3px rgba(83,131,229,.15)}
+.ob-part h4{margin:0;font:500 14px/1.3 var(--ui);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ob-part h4 em{font-style:normal;font-weight:400;font-size:11.5px;padding:2px 8px;border-radius:5px;background:#f1f3f6;color:var(--app-mute)}
+.ob-tasks{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:6px;font-size:12.5px;color:#4a5566}
+.ob-tasks span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.ob-tasks .bx{width:14px;height:14px;border-radius:4px;border:1.5px solid #b9c1cc;display:grid;place-items:center;background:#fff}
+.ob-tasks .bx svg{width:10px;height:10px;stroke:#fff;stroke-width:2.8;opacity:0}
+.ob-tasks .bx.on{background:var(--green);border-color:var(--green)}
+.ob-tasks .bx.on svg{opacity:1}
+.ob-tasks .yn{display:inline-flex;border:1px solid #cfd5dd;border-radius:6px;overflow:hidden;font-size:11px}
+.ob-tasks .yn i{font-style:normal;padding:1px 7px;border-right:1px solid #cfd5dd;color:var(--app-mute)}
+.ob-tasks .yn i:last-child{border-right:0}
+.ob-tasks .yn i.on{background:var(--green-bg);color:var(--green);font-weight:500}
+.ob-tasks .pr{display:inline-block;min-width:74px;min-height:19px;vertical-align:middle;padding:1px 7px;border:1px solid #cfd5dd;border-radius:6px;font-size:11.5px;color:var(--app-ink);background:#fff}
+.ob-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-size:11.5px;color:var(--app-mute);white-space:nowrap;text-align:right}
+.ob-side .btn{height:30px;padding:0 12px;font-size:12px}
+.ob-hist{border-top:1px solid var(--app-line);padding-top:9px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--app-mute)}
+.ob-hist div{display:flex;gap:10px}
+.ob-hist time{font-variant-numeric:tabular-nums;color:var(--app-ink);min-width:86px}
 
 /* ── SECTIONS ── */
 .sw{position:relative;padding:110px 64px;background:var(--white);color:var(--text)}
@@ -735,16 +807,29 @@ svg.mk{fill:currentColor !important;stroke:none !important}
 
 /* ── RESPONSIVE ── */
 @media (max-width:1100px){.hero .wrap{grid-template-columns:1fr;padding:130px 32px 70px;min-height:0}.hero-stage{height:62vw;max-height:520px}}
-@media (max-width:960px){
-  .j-inner{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:14px;padding:84px 16px 16px;align-items:start}
-  .j-stage{order:-1;height:50svh;min-height:250px}
-  .j-left{grid-template-columns:1fr}
-  .rail{display:none}
-  .j-text{height:auto;min-height:240px}
-  .step{position:absolute;gap:8px}
+@media (max-width:1240px){
+  nav,nav.sc{padding-left:32px;padding-right:32px}
+  .nav-links{gap:22px}
+  .nav-links a,.nav-cta{white-space:nowrap}
+}
+@media (max-width:1060px){.nav-links a[href="#process"],.nav-links a[href="#probleme"]{display:none}}
+@media (max-width:1180px){
+  .j-main{grid-template-columns:minmax(0,1fr);gap:22px}
+  .j-stage{order:-1;width:100%;max-width:1000px;margin:0 auto;height:auto;aspect-ratio:1000/640;max-height:calc(100svh - 260px)}
+  .j-text{max-width:760px}
+  .onb .onb-head{grid-template-columns:1fr;gap:18px}
+  .onb-feats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .journey{padding:80px 16px 64px}
+  .j-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .j-tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px 22px;padding:2px 16px 6px;scrollbar-width:none}
+  .j-tabs::-webkit-scrollbar{display:none}
+  .j-tab{flex:0 0 auto;width:200px;scroll-snap-align:start}
   .step h2{font-size:26px}
-  .step p{font-size:14.5px}
-  .step .kpi{display:none}
+  .step p{font-size:15px}
+  .step .kpi b{font-size:34px}
+  .onb-feats{grid-template-columns:1fr}
 }
 @media (max-width:900px){
   nav{padding:16px 20px}nav.sc{padding:12px 20px}.nav-links{display:none}
@@ -792,6 +877,7 @@ svg.mk{fill:currentColor !important;stroke:none !important}
   <a href="#" class="nav-logo" aria-label="HSEPlatform, accueil"><svg class="lg" viewBox="0 0 519.50 91.50"><use href="#lg-full"/></svg></a>
   <div class="nav-links">
     <a href="#grille">Le parcours</a>
+    <a href="#onboarding">Onboarding</a>
     <a href="#probleme">Problème</a>
     <a href="#solution">Solution</a>
     <a href="#process">Process</a>
@@ -838,29 +924,34 @@ svg.mk{fill:currentColor !important;stroke:none !important}
   <div class="scroll-cue"><span>Faites défiler</span><i></i></div>
 </section>
 
-<!-- PARCOURS 3D : du lien reçu la veille à la grille, écran par écran -->
+<!-- PARCOURS : du lien reçu la veille à la grille, écran par écran (lecteur à onglets) -->
 <section class="journey" id="grille">
   <div class="glow g1"></div><div class="glow g2"></div>
-  <div class="j-inner">
-    <div class="j-left">
-      <div class="rail" id="rail"><div class="line"></div><div class="fill" id="railFill"></div>
-        <div class="dot on" style="top:2px">1</div><div class="dot" style="top:101px">2</div><div class="dot" style="top:200px">3</div><div class="dot" style="top:299px">4</div><div class="dot" style="top:398px">5</div>
+  <div class="j-wrap">
+    <div class="j-head">
+      <div>
+        <span class="eyebrow">Le parcours, écran par écran</span>
+        <h2 class="sec-title">Du lien reçu la veille à la <em>barrière qui se lève.</em></h2>
       </div>
-      <div class="j-text" id="steps">
+      <button class="j-play" id="jPlay" type="button" aria-label="Mettre en pause l’animation"><svg class="i-pause" viewBox="0 0 12 12"><rect x="2" y="1.5" width="3" height="9" rx="1"/><rect x="7" y="1.5" width="3" height="9" rx="1"/></svg><svg class="i-play" viewBox="0 0 12 12"><path d="M3 1.5v9l7.5-4.5z"/></svg><span>Pause</span></button>
+    </div>
+    <div class="j-tabs" id="jTabs" role="tablist" aria-label="Étapes du parcours"><button class="j-tab on" type="button" role="tab" aria-selected="true" aria-controls="jStage" data-i="0"><i>1</i><span><b>Lundi · 08:02</b>Créer l’accès</span><s><u></u></s></button><button class="j-tab" type="button" role="tab" aria-selected="false" aria-controls="jStage" data-i="1"><i>2</i><span><b>Lundi · 18:30</b>Se former en amont</span><s><u></u></s></button><button class="j-tab" type="button" role="tab" aria-selected="false" aria-controls="jStage" data-i="2"><i>3</i><span><b>Mardi · 07:00</b>Passer la grille</span><s><u></u></s></button><button class="j-tab" type="button" role="tab" aria-selected="false" aria-controls="jStage" data-i="3"><i>4</i><span><b>13 mars · 06:00</b>Relancer avant expiration</span><s><u></u></s></button><button class="j-tab" type="button" role="tab" aria-selected="false" aria-controls="jStage" data-i="4"><i>5</i><span><b>18 mars · 10:15</b>Prouver en audit</span><s><u></u></s></button></div>
+    <div class="j-main">
+      <div class="j-text" id="steps" aria-live="polite">
         <div class="step"><div class="chip"><b>Lundi · 08:02</b><span>Bureau HSE</span></div><h2>L’accès est créé en <em>30 secondes.</em></h2><p>Prénom, nom, e-mail, formation, type de personne. L’invitation part dans la minute, et le responsable HSE passe à autre chose.</p><div class="kpi"><b>30 s</b><span>pour créer un accès et envoyer l’invitation</span></div></div>
         <div class="step"><div class="chip"><b>Lundi · 18:30</b><span>Depuis son téléphone</span></div><h2>Le collaborateur se forme <em>avant d’arriver.</em></h2><p>Dans le train, dans le camion ou à la maison : les consignes de votre site, un QCM adapté à vos risques, un score. Le certificat est généré dès la réussite, avec sa date de validité.</p><div class="kpi"><b>15 min</b><span>pour passer l’accueil sécurité, sans mobiliser un formateur</span></div></div>
         <div class="step"><div class="chip"><b>Mardi · 07:00</b><span>Poste de garde</span></div><h2>À la grille, l’agent de sécurité vérifie en <em>5 secondes.</em></h2><p>Un nom tapé au poste de sécurité : réussite, score, validité du certificat, accès au site. Personne n’appelle le bureau HSE, la barrière se lève.</p><div class="kpi"><b>0</b><span>appel au bureau HSE pour laisser entrer un externe formé</span></div></div>
         <div class="step"><div class="chip"><b>13 mars · 06:00</b><span>30 jours avant l’expiration</span></div><h2>Six mois plus tard, la relance part <em>toute seule.</em></h2><p>Une règle par type de collaborateur : automatique pour les externes, manuelle si vous préférez garder la main. Le collaborateur reçoit l’e-mail, vous n’avez rien eu à faire.</p><div class="kpi"><b>0</b><span>certificat expiré sans que personne ne le sache</span></div></div>
         <div class="step"><div class="chip"><b>Jeudi 18 mars · 10:15</b><span>Visite de l’inspecteur</span></div><h2>Le jour de l’audit, tout est <em>déjà tracé.</em></h2><p>Chaque passage est horodaté, numéroté, filtrable par formation, par type de collaborateur, par validité. L’export CSV part en un clic.</p><div class="kpi"><b>1 clic</b><span>pour sortir l’historique complet des formations</span></div></div>
       </div>
-    </div>
-    <div class="j-stage" id="jStage">
-      <div class="j-box" id="jBox">
-        <div class="layer" id="L1"></div>
-        <div class="layer" id="L2"></div>
-        <div class="layer" id="L3"></div>
-        <div class="layer" id="L4"></div>
-        <div class="layer" id="L5"></div>
+      <div class="j-stage" id="jStage" role="tabpanel">
+        <div class="j-box" id="jBox">
+          <div class="layer" id="L1"></div>
+          <div class="layer" id="L2"></div>
+          <div class="layer" id="L3"></div>
+          <div class="layer" id="L4"></div>
+          <div class="layer" id="L5"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -877,6 +968,27 @@ svg.mk{fill:currentColor !important;stroke:none !important}
     </div>
   </div>
 </div>
+
+<!-- ONBOARDING DES NOUVEAUX COLLABORATEURS -->
+<section class="sw dk onb" id="onboarding">
+  <div class="si">
+    <div class="onb-head">
+      <div>
+        <span class="eyebrow r"><span class="new">Nouveau</span>Onboarding des nouveaux collaborateurs</span>
+        <h2 class="sec-title r d1">Chaque nouvel arrivant suit un parcours <em>que tout le monde voit avancer.</em></h2>
+      </div>
+      <p class="sec-body r d2">RH, HSE, chef d’équipe, tuteur : chacun valide sa partie de la fiche d’arrivée. Vous savez à tout moment ce qui est fait, ce qui reste et qui doit agir. La checklist papier qui passe de bureau en bureau, c’est terminé.</p>
+    </div>
+    <div class="onb-stage r d2" id="onbStage"><div class="onb-box" id="onbBox"></div></div>
+    <ol class="onb-feats">
+      <li class="r d1"><b>Un modèle par poste</b><p>Vous construisez vos fiches d’onboarding une fois : des parties, des tâches, un intervenant responsable pour chaque partie.</p></li>
+      <li class="r d2"><b>Des tâches adaptées au terrain</b><p>Case à cocher, texte à saisir, ou Oui / Non / Sans objet avec une précision : niveau d’habilitation électrique, catégorie de CACES.</p></li>
+      <li class="r d3"><b>Chacun valide sa partie</b><p>Avec le rôle Intervenant, le chef d’équipe ou le tuteur complète et valide uniquement ce qui le concerne.</p></li>
+      <li class="r d1"><b>Statut et historique</b><p>Fiches à venir, en cours, en retard ou terminées. Chaque validation est horodatée et nominative.</p></li>
+    </ol>
+    <div class="onb-cta r"><a class="btn-main" href="#contact">Voir l’onboarding sur vos postes en 30 min</a></div>
+  </div>
+</section>
 
 <!-- PROBLÈME -->
 <div class="sw" id="probleme">
@@ -924,7 +1036,7 @@ svg.mk{fill:currentColor !important;stroke:none !important}
       <div class="cbl r d1">
         <div class="cbl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2.5 21c0-3.8 3-6 6.5-6 1.5 0 2.9.4 4 1"/><path d="M18 13v6M15 16h6"/></svg></div>
         <div class="cbl-t">Nouveaux collaborateurs</div>
-        <div class="cbl-d">Accueil sécurité dès l'embauche, avant la prise de poste.</div>
+        <div class="cbl-d">Accueil sécurité dès l'embauche, puis une fiche d’arrivée suivie par RH, HSE et tuteur.</div>
       </div>
       <div class="cbl r d2">
         <div class="cbl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M5 18a7 7 0 0 1 14 0"/><path d="M9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></div>
@@ -1325,10 +1437,11 @@ var I={
  clock:'<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg>',
  warn:'<svg viewBox="0 0 16 16"><path d="M8 2.5l6 11H2z"/><path d="M8 6.5v3M8 11.8v.2"/></svg>',
  send:'<svg viewBox="0 0 16 16"><path d="M14 2L2 7l5 2 2 5z"/></svg>',
+ clip:'<svg viewBox="0 0 16 16"><rect x="3" y="2.5" width="10" height="12" rx="1.5"/><path d="M6 2.5h4v2H6zM5.5 8l1.5 1.5L10.5 6M5.5 12h5"/></svg>',
  mail:'<svg viewBox="0 0 16 16"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M2 4.5l6 4.5 6-4.5"/></svg>',
  cursor:'<div class="cursor"><svg viewBox="0 0 24 24"><path d="M4 2l16 9-7 1.5L10 20z" fill="#111" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><i class="ring"></i></div>'
 };
-var NAV=[['Pilotage',[['Poste de sécurité',I.shield],['Résultats',I.bars],['Analyse',I.chart]]],['Formations',[['Créer une formation',I.file],['Liste des formations',I.list]]],['Collaborateurs',[['Renouvellements',I.refresh],['Accès collaborateurs',I.users]]],['Administration',[['Utilisateurs',I.user],['Paramétrage',I.sliders]]]];
+var NAV=[['Pilotage',[['Poste de sécurité',I.shield],['Résultats',I.bars],['Analyse',I.chart]]],['Formations',[['Créer une formation',I.file],['Liste des formations',I.list]]],['Collaborateurs',[['Renouvellements',I.refresh],['Accès collaborateurs',I.users]]],['Onboarding',[['Fiches d’arrivée',I.clip],['Fiches d’onboarding',I.list]]],['Administration',[['Utilisateurs',I.user],['Paramétrage',I.sliders]]]];
 function shell(id,active,body,cls,style,cursor){
   var nav=NAV.map(function(g){return '<div class="grp">'+g[0]+'</div>'+g[1].map(function(it){return '<div class="navi'+(it[0]===active?' on':'')+'">'+it[1]+'<span>'+it[0]+'</span></div>'}).join('')}).join('');
   return '<div class="app '+(cls||'')+'"'+(id?' id="'+id+'"':'')+' style="'+(style||'')+'"><aside class="side"><div class="brand"><svg class="mk" viewBox="0 0 519.50 91.50"><use href="#lg-full"/></svg></div>'+nav+'</aside><div class="main"><div class="top"><div class="search">'+I.search+'<span>Rechercher une formation ou un collaborateur</span></div><div class="who"><b>JL</b><div><strong>Juliette Lacourt</strong><small>Administrateur</small></div></div></div><div class="body">'+body+'</div></div>'+(cursor?I.cursor:'')+'</div>';
@@ -1368,6 +1481,22 @@ function body5(hero){return '<div class="ph-row"><h2 class="pt">Analyse</h2><div
  '<div class="kpis"><div><small>Formations passées</small><b id="a-k1">'+(hero?'1 240':'0')+'</b></div><div><small>Taux de réussite</small><b class="g" id="a-k2">'+(hero?'96 %':'0 %')+'</b></div><div><small>'+I.warn+'Certificats expirés</small><b class="r" id="a-k3">0</b></div><div><small>Collaborateurs à jour</small><b class="g" id="a-k4">'+(hero?'100 %':'0 %')+'</b></div></div>'+
  '<div class="card chart"><div class="chart-h"><h3 class="ct">Formations par mois</h3><div class="btn" id="a-export">'+I.download+'Exporter en CSV</div></div><div class="legend"><span><i style="background:var(--blue)"></i>Réussites</span><span><i style="background:repeating-linear-gradient(135deg,var(--red) 0 3px,#f1b3ad 3px 6px)"></i>Échecs</span></div><div class="bars" id="bars"><span class="yl" style="bottom:0">0</span><span class="yl" style="bottom:35.7%">50</span><span class="yl" style="bottom:71.4%">100</span>'+barsHtml+'</div></div>'}
 
+var CK=I.check;
+function bx(on){return '<i class="bx'+(on?' on':'')+'">'+CK+'</i>'}
+var body6='<div class="ph-row"><h2 class="pt">Fiches d’arrivée</h2><span class="sub">Suivez l’intégration de chaque nouvel arrivant, partie par partie, intervenant par intervenant.</span></div>'+
+ '<div class="ob"><div class="card ob-list" style="padding:14px 0 0"><h3 class="ct">Arrivées</h3><div class="ob-filt"><span class="on">En cours 3</span><span>À venir 2</span><span>En retard 1</span><span>Terminées 12</span></div>'+
+ '<div class="ob-it on"><strong>Lucas Martin<em class="pill blue">En cours</em></strong><small>Opérateur de production · arrivé le 04/01</small></div>'+
+ '<div class="ob-it"><strong>Inès Morel<em class="pill red">En retard</em></strong><small>Technicienne de maintenance · 21/12</small></div>'+
+ '<div class="ob-it"><strong>Sarah Benali<em class="pill amber">À venir</em></strong><small>Cariste · arrivée le 11/01</small></div>'+
+ '<div class="ob-it"><strong>Thomas Roux<em class="pill green">Terminée</em></strong><small>Chef d’équipe · 14/12</small></div></div>'+
+ '<div class="card ob-det"><div class="ob-top"><div><strong>Lucas Martin</strong><small>Opérateur de production · Salarié · fiche « Opérateur ligne 2 »</small></div><em class="pill blue" id="ob-status">En cours</em></div>'+
+ '<div class="ob-prog"><div class="bar"><i id="ob-bar"></i></div><b id="ob-count">1 partie sur 4 validée</b></div>'+
+ '<div class="ob-part ok"><div class="ck">'+CK+'</div><div><h4>Accueil administratif<em>RH · Claire Vidal</em></h4><div class="ob-tasks"><span>'+bx(1)+'Contrat et documents remis</span><span>'+bx(1)+'Badge d’accès remis</span></div></div><div class="ob-side"><b style="color:var(--green);font-weight:500">Validée</b>04/01 · 08:45</div></div>'+
+ '<div class="ob-part" id="ob-p2"><div class="ck">'+CK+'</div><div><h4>Sécurité au poste<em>HSE · Juliette Lacourt</em></h4><div class="ob-tasks"><span><i class="bx" id="ob-t21">'+CK+'</i>Consignes du poste expliquées</span><span>EPI remis <span class="yn"><i id="ob-t22">Oui</i><i>Non</i><i>Sans objet</i></span></span></div></div><div class="ob-side" id="ob-s2"><span class="v1">À faire</span></div></div>'+
+ '<div class="ob-part" id="ob-p3"><div class="ck">'+CK+'</div><div><h4>Habilitations et CACES<em>Chef d’équipe · Marc Duval</em></h4><div class="ob-tasks"><span>Habilitation électrique <span class="yn"><i id="ob-t31">Oui</i><i>Non</i><i>Sans objet</i></span><span class="pr" id="ob-t31p">&nbsp;</span></span><span>CACES <span class="yn"><i id="ob-t32">Oui</i><i>Non</i><i>Sans objet</i></span><span class="pr" id="ob-t32p">&nbsp;</span></span></div></div><div class="ob-side" id="ob-s3"><span>À faire</span></div></div>'+
+ '<div class="ob-part"><div class="ck">'+CK+'</div><div><h4>Intégration au poste<em>Tuteur · Paul Garnier</em></h4><div class="ob-tasks"><span>'+bx(0)+'Visite du poste et des issues de secours</span><span>'+bx(0)+'Point à J+7</span></div></div><div class="ob-side"><span>À faire</span></div></div>'+
+ '<div class="ob-hist"><div><time>04/01 · 08:45</time><span>Claire Vidal a validé « Accueil administratif »</span></div><div id="ob-h2"><time>04/01 · 10:20</time><span>Juliette Lacourt a validé « Sécurité au poste »</span></div><div id="ob-h3"><time>05/01 · 14:05</time><span>Marc Duval a validé « Habilitations et CACES »</span></div></div></div></div>';
+
 var phoneHtml='<div class="phone" id="phone2"><div class="notch"></div><div class="scr">'+
  '<div class="ps lock" id="ps-lock"><div class="time">18:30</div><div class="date">lundi 12 octobre</div><div class="notif" id="notif2"><div class="n-h">'+I.mark+'<b>HSEPlatform</b><span>maintenant</span></div><strong>Vous êtes invité à passer l’accueil sécurité</strong><p>Formation en ligne · 15 min · à faire avant votre intervention de mardi.</p></div></div>'+
  '<div class="ps quiz" id="ps-quiz"><div class="q-top">'+I.mark+'Accueil sécurité<em>Site industriel</em></div><div class="prog" id="prog2"><b></b><b></b><b></b></div><div class="qwrap">'+
@@ -1388,11 +1517,12 @@ $('#c-front').innerHTML=shell(null,'Poste de sécurité',stripIds(body3hero),'',
 $$('#c-mid .app, #c-back .app').forEach(function(a){a.style.transform='scale(.564)'});
 var mid=$('#c-mid');var k30=mid.querySelectorAll('.kpis b')[1];if(k30)k30.textContent='1';var kn=mid.querySelectorAll('.kpis b')[2];if(kn)kn.textContent='0';
 
-$('#L1').innerHTML=shell('app1','Accès collaborateurs',body1,'','left:77px;top:30px;transform:scale(.9)',true)+'<div class="toast" id="toast1" style="left:560px;top:560px">'+I.check+'Accès créé · e-mail envoyé à george.dupont@autre.fr</div>';
+$('#onbBox').innerHTML=shell('app6','Fiches d’arrivée',body6,'','width:1100px;height:680px',true);
+$('#L1').innerHTML=shell('app1','Accès collaborateurs',body1,'','left:40px;top:14px;transform:scale(.97)',true)+'<div class="toast" id="toast1" style="left:560px;top:560px">'+I.check+'Accès créé · e-mail envoyé à george.dupont@autre.fr</div>';
 $('#L2').innerHTML=phoneHtml.replace('id="phone2"','id="phone2" style="left:210px;top:10px;transform:scale(.82)"')+certHtml.replace('id="cert"','id="cert" style="left:500px;top:290px;transform:scale(.8)"');
-$('#L3').innerHTML=shell('app3','Poste de sécurité',body3,'','left:20px;top:20px;transform:scale(.88)',true)+guardSvg.replace('id="booth"','id="booth" style="left:640px;top:400px;width:420px;height:260px"')+'<div class="stamp" id="stamp3" style="position:absolute;left:230px;top:470px;font-size:46px;padding:10px 24px;border-width:6px">Accès autorisé</div>';
-$('#L4').innerHTML=shell('app4','Renouvellements',body4,'lg','left:20px;top:40px;transform:scale(.84)')+'<div class="callout" id="rule4" style="left:600px;top:0">'+'<small>Paramétrage › Collaborateurs externes</small><strong><i></i>Relance automatique par e-mail</strong><span>30 jours avant l’expiration · modèle du site</span></div>'+miniPhone.replace('id="phone4"','id="phone4" style="left:830px;top:300px;transform:scale(.45)"');
-$('#L5').innerHTML=shell('app5','Analyse',body5(false),'lg','left:20px;top:30px;transform:scale(.86)',true)+'<div class="file" id="csv" style="left:520px;top:330px">'+I.file+'<div><strong>resultats-accueil-securite-2026-2027.csv</strong><small>1 240 lignes · horodatées · prêtes pour l’inspecteur</small></div></div>';
+$('#L3').innerHTML=shell('app3','Poste de sécurité',body3,'','left:10px;top:8px;transform:scale(.95)',true)+guardSvg.replace('id="booth"','id="booth" style="left:640px;top:400px;width:420px;height:260px"')+'<div class="stamp" id="stamp3" style="position:absolute;left:230px;top:470px;font-size:46px;padding:10px 24px;border-width:6px">Accès autorisé</div>';
+$('#L4').innerHTML=shell('app4','Renouvellements',body4,'lg','left:0;top:30px;transform:scale(.9)')+'<div class="callout" id="rule4" style="left:600px;top:0">'+'<small>Paramétrage › Collaborateurs externes</small><strong><i></i>Relance automatique par e-mail</strong><span>30 jours avant l’expiration · modèle du site</span></div>'+miniPhone.replace('id="phone4"','id="phone4" style="left:830px;top:300px;transform:scale(.45)"');
+$('#L5').innerHTML=shell('app5','Analyse',body5(false),'lg','left:0;top:12px;transform:scale(.93)',true)+'<div class="file" id="csv" style="left:520px;top:330px">'+I.file+'<div><strong>resultats-accueil-securite-2026-2027.csv</strong><small>1 240 lignes · horodatées · prêtes pour l’inspecteur</small></div></div>';
 
 /* ---------- mise à l'échelle des scènes ---------- */
 function fitBox(stage,box,w,h){
@@ -1401,9 +1531,13 @@ function fitBox(stage,box,w,h){
 }
 fitBox($('#heroStage'),$('#heroBox'),800,560);
 fitBox($('#jStage'),$('#jBox'),1000,640);
+fitBox($('#onbStage'),$('#onbBox'),1100,680);
 
 if(!hasGsap||typeof ScrollTrigger==='undefined'){
-  /* sans GSAP : on affiche la première scène, fixe */
+  /* sans GSAP : onglets simples, scènes fixes */
+  var fl=$$('#jBox .layer'),fs=$$('#steps .step'),ft=$$('#jTabs .j-tab');
+  ft.forEach(function(tb,k){tb.addEventListener('click',function(){[fl,fs].forEach(function(a){a.forEach(function(e,j){e.style.opacity=j===k?1:0;e.style.visibility=j===k?'visible':'hidden'})});ft.forEach(function(x,j){x.classList.toggle('on',j===k);x.setAttribute('aria-selected',j===k)})})});
+  var jp=$('#jPlay');if(jp)jp.style.display='none';
   return;
 }
 gsap.registerPlugin(ScrollTrigger);
@@ -1439,33 +1573,21 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
   }
 })();
 
-/* ---------- parcours : une timeline pilotée par le scroll, section épinglée ---------- */
+/* ---------- parcours : lecteur à onglets, lecture auto quand la section est visible ---------- */
 (function(){
-  var L=['#L1','#L2','#L3','#L4','#L5'],steps=$$('#steps .step'),dots=$$('#rail .dot');
-  var POSE={rotationY:-7,rotationX:4,x:0,z:0,scale:1,autoAlpha:1};
-  var OUT={rotationY:-34,rotationX:4,x:-420,z:-520,scale:.9,autoAlpha:0};
-  var IN={rotationY:34,rotationX:4,x:420,z:-520,scale:.9,autoAlpha:0};
-  gsap.set(L,{transformPerspective:2000});
-  gsap.set('#L1',POSE);gsap.set(['#L2','#L3','#L4','#L5'],IN);
+  var L=['#L1','#L2','#L3','#L4','#L5'],steps=$$('#steps .step'),tabs=$$('#jTabs .j-tab'),bars=tabs.map(function(t){return t.querySelector('s u')});
+  var POSE={rotationY:-4,rotationX:3,x:0,z:0,scale:1,autoAlpha:1};
+  gsap.set(L,{transformPerspective:2200});
+  gsap.set('#L1',POSE);gsap.set(['#L2','#L3','#L4','#L5'],{autoAlpha:0});
   gsap.set(['#toast1','#notif2','#ps-quiz','#ps-result','#cert','#seal','#tap2','#stamp3','#notif4','#rule4','#csv','.cursor','.menu','#t-george','#g-row'],{autoAlpha:0});
   gsap.set('#ps-quiz',{y:760});gsap.set(['#q2','#q3'],{x:380});
   gsap.set('#arm',{svgOrigin:'267 152'});
   gsap.set('#app5 .bars .col i',{scaleY:0,transformOrigin:'50% 100%'});
   gsap.set('#cert',{scale:.8});
-
-  var S=10,T=2.5;
-  var tl=gsap.timeline({defaults:{ease:'power2.out'},scrollTrigger:{trigger:'#grille',start:'top top',end:'+=5200',pin:true,scrub:reduce?true:.9,anticipatePin:1,invalidateOnRefresh:false}});
-
-  function stepStart(i){return i*(S+T)}
-  function transition(i){var t=gsap.timeline();
-    t.to(L[i],{rotationY:OUT.rotationY,x:OUT.x,z:OUT.z,scale:OUT.scale,autoAlpha:0,duration:T*.6,ease:'power2.in'},0)
-     .fromTo(L[i+1],IN,{rotationY:POSE.rotationY,rotationX:POSE.rotationX,x:0,z:0,scale:1,autoAlpha:1,duration:T*.7,ease:'power2.out',immediateRender:false},T*.35)
-     .to(steps[i],{autoAlpha:0,y:-16,duration:T*.4},0)
-     .fromTo(steps[i+1],{autoAlpha:0,y:16},{autoAlpha:1,y:0,duration:T*.5,immediateRender:false},T*.45)
-     .to(dots[i+1],{backgroundColor:'#5383e5',borderColor:'#5383e5',color:'#ffffff',duration:.3},T*.5);
-    return t}
-  tl.to('#railFill',{scaleY:1,duration:stepStart(4),ease:'none'},0);
-
+  var T=[];
+  var tl={add:function(t){t.pause();T.push(t);return tl}};
+  function stepStart(){return 0}
+  function transition(){return gsap.timeline()}
   /* étape 1 : création de l'accès */
   var a='#app1',c='#app1 .cursor',t1=gsap.timeline({defaults:{ease:'power2.out'}});
   t1.set(c,{x:560,y:420},0).to(c,{autoAlpha:1,duration:.3},.4)
@@ -1495,7 +1617,6 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
     .add(countTo('#c-all',1,.3),8.5).add(countTo('#c-wait',1,.3),8.5)
     .to(c,{autoAlpha:0,duration:.3},9.0);
   tl.add(t1,stepStart(0));
-  tl.add(transition(0),stepStart(0)+S);
 
   /* étape 2 : téléphone */
   var t2=gsap.timeline({defaults:{ease:'power2.out'}}),scr='#phone2 .scr';
@@ -1515,7 +1636,6 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
     .fromTo('#cert',{autoAlpha:0,x:-200,y:-120,scale:.2,rotation:0},{autoAlpha:1,x:0,y:0,scale:.8,rotation:-4,duration:.9,ease:'back.out(1.2)',immediateRender:false},8.6)
     .fromTo('#seal',{autoAlpha:0,scale:2.4,rotation:14},{autoAlpha:1,scale:1,rotation:-12,duration:.35,ease:'power3.in',immediateRender:false},9.5);
   tl.add(t2,stepStart(1));
-  tl.add(transition(1),stepStart(1)+S);
 
   /* étape 3 : poste de garde */
   var a3='#app3',c3='#app3 .cursor',t3=gsap.timeline({defaults:{ease:'power2.out'}});
@@ -1529,7 +1649,6 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
     .fromTo('#stamp3',{autoAlpha:0,scale:2.4,rotation:0},{autoAlpha:1,scale:1,rotation:-8,duration:.5,ease:'power3.in',immediateRender:false},3.4)
     .to('#arm',{rotation:-80,duration:1.2,ease:'back.out(1.1)'},4.3);
   tl.add(t3,stepStart(2));
-  tl.add(transition(2),stepStart(2)+S);
 
   /* étape 4 : renouvellement */
   var t4=gsap.timeline({defaults:{ease:'power2.out'}});
@@ -1541,7 +1660,6 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
     .to('#r-row .stack2:nth-child(5) .v1',{autoAlpha:0,duration:.3},5.6).to('#r-row .stack2:nth-child(5) .v2',{autoAlpha:1,duration:.3},5.7)
     .add(countTo('#k-never',0,.4,null,1),5.6);
   tl.add(t4,stepStart(3));
-  tl.add(transition(3),stepStart(3)+S);
 
   /* étape 5 : audit */
   var a5='#app5',c5='#app5 .cursor',t5=gsap.timeline({defaults:{ease:'power2.out'}});
@@ -1553,8 +1671,77 @@ function selectOpt(sel){var t=gsap.timeline();t.to(sel,{backgroundColor:'#e1f3e8
     .add(moveCursor(c5,'#a-export',a5,.8,.5,.5),3.8).add(click(c5),4.7).add(press('#a-export'),4.72)
     .fromTo('#csv',{autoAlpha:0,y:-24,scale:.9},{autoAlpha:1,y:0,scale:1,duration:.6,ease:'back.out(1.4)',immediateRender:false},5.2)
     .to(c5,{autoAlpha:0,duration:.3},6.2)
-    .to({},{duration:2});
+    .to({},{duration:1});
   tl.add(t5,stepStart(4));
+
+  var cur=0,playing=!reduce,inView=false,hold=null,trans=null,startCall=null;
+  var jp=$('#jPlay');
+  function setBar(i,p){bars[i].style.width=(p*100).toFixed(1)+'%'}
+  function clearTimers(){if(hold){hold.kill();hold=null}if(startCall){startCall.kill();startCall=null}}
+  T.forEach(function(t,i){
+    t.timeScale(1.15);
+    t.eventCallback('onUpdate',function(){if(i===cur)setBar(i,t.progress())});
+    t.eventCallback('onComplete',function(){setBar(i,1);if(playing&&inView){hold=gsap.delayedCall(2.4,function(){go((cur+1)%5,1)})}});
+  });
+  function run(){clearTimers();if(reduce||!playing){T[cur].progress(1,false);setBar(cur,1);return}if(!inView)return;if(T[cur].progress()>=1){hold=gsap.delayedCall(1.2,function(){go((cur+1)%5,1)})}else{T[cur].play()}}
+  function go(n,dir){
+    clearTimers();
+    if(trans){trans.progress(1);trans=null}
+    var prev=cur;if(n===prev){run();return}
+    if(dir==null)dir=n>prev?1:-1;
+    T[prev].pause();
+    tabs.forEach(function(tb,k){tb.classList.toggle('on',k===n);tb.classList.toggle('done',k<n);tb.setAttribute('aria-selected',k===n?'true':'false');setBar(k,k<n?1:0)});
+    cur=n;T[n].pause(0,false);setBar(n,0);
+    var d=reduce?0:1;
+    trans=gsap.timeline({onComplete:function(){T[prev].pause(0,false);trans=null}});
+    trans.to(L[prev],{rotationY:-26*dir,x:-320*dir,z:-420,scale:.94,autoAlpha:0,duration:.55*d,ease:'power2.in'},0)
+      .fromTo(L[n],{rotationY:26*dir,rotationX:3,x:320*dir,z:-420,scale:.94,autoAlpha:0},{rotationY:POSE.rotationY,rotationX:POSE.rotationX,x:0,z:0,scale:1,autoAlpha:1,duration:.7*d,ease:'power2.out',immediateRender:false},.25*d)
+      .to(steps[prev],{autoAlpha:0,y:-12,duration:.3*d},0)
+      .fromTo(steps[n],{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.45*d,immediateRender:false},.35*d);
+    startCall=gsap.delayedCall(.75*d,run);
+    var tb=tabs[n];if(tb&&tb.parentNode.scrollWidth>tb.parentNode.clientWidth){tb.parentNode.scrollTo({left:tb.offsetLeft-16,behavior:reduce?'auto':'smooth'})}
+  }
+  tabs.forEach(function(tb,k){tb.addEventListener('click',function(){go(k)})});
+  $('#jTabs').addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!k)return;e.preventDefault();var n=(cur+k+5)%5;go(n,k);tabs[n].focus()});
+  function setPlaying(p){playing=p;jp.classList.toggle('paused',!p);jp.querySelector('span').textContent=p?'Pause':'Lecture';jp.setAttribute('aria-label',p?'Mettre en pause l’animation':'Relancer l’animation');if(p){run()}else{clearTimers();T[cur].pause()}}
+  if(reduce){jp.style.display='none';T[0].progress(1,false);setBar(0,1)}
+  else{jp.addEventListener('click',function(){setPlaying(!playing)})}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView){run()}else{clearTimers();T[cur].pause()}})},{threshold:.35}).observe($('#jStage'));
+  }else{inView=true;run()}
+  document.addEventListener('visibilitychange',function(){if(document.hidden){clearTimers();T[cur].pause()}else if(inView){run()}});
+})();
+
+/* ---------- onboarding : la fiche d'arrivée se remplit quand on la voit ---------- */
+(function(){
+  var st=$('#onbStage');if(!st)return;
+  var a='#app6',c='#app6 .cursor';
+  gsap.set(['#ob-h2','#ob-h3'],{autoAlpha:0,height:0});gsap.set(c,{autoAlpha:0});
+  var t=gsap.timeline({paused:true,defaults:{ease:'power2.out'}});
+  function tick(sel,at){t.add(function(){$(sel).classList.add('on')},at)}
+  function yes(sel,at){t.to(sel,{backgroundColor:'#e1f3e8',color:'#1e8a4f',duration:.2},at)}
+  function validate(p,s,h,at,count,width){
+    t.add(function(){$(p).className='ob-part ok'},at)
+     .fromTo(p+' .ck',{scale:.6},{scale:1,duration:.45,ease:'back.out(2.4)',immediateRender:false},at)
+     .add(function(){$(s).innerHTML='<b style="color:var(--green);font-weight:500">Validée</b>'+$(h+' time').textContent},at)
+     .to(h,{autoAlpha:1,height:'auto',duration:.4},at+.1)
+     .to('#ob-bar',{width:width,duration:.6},at)
+     .add(function(){$('#ob-count').textContent=count},at+.2);
+  }
+  t.set(c,{x:760,y:520},0).to(c,{autoAlpha:1,duration:.3},.2)
+   .add(function(){$('#ob-p2').className='ob-part cur'},.3)
+   .add(moveCursor(c,'#ob-t21',a,.6),.4).add(click(c),1.0);tick('#ob-t21',1.05);
+  t.add(moveCursor(c,'#ob-t22',a,.5),1.3).add(click(c),1.8);yes('#ob-t22',1.85);
+  validate('#ob-p2','#ob-s2','#ob-h2',2.4,'2 parties sur 4 validées','50%');
+  t.add(function(){$('#ob-p3').className='ob-part cur'},3.0)
+   .add(moveCursor(c,'#ob-t31',a,.6),3.1).add(click(c),3.7);yes('#ob-t31',3.75);
+  t.add(typeIn('#ob-t31p','B0 H0V',.5),3.9)
+   .add(moveCursor(c,'#ob-t32',a,.5),4.5).add(click(c),5.0);yes('#ob-t32',5.05);
+  t.add(typeIn('#ob-t32p','R489 cat. 3',.6),5.2);
+  validate('#ob-p3','#ob-s3','#ob-h3',6.1,'3 parties sur 4 validées','75%');
+  t.to(c,{autoAlpha:0,duration:.3},6.6);
+  if(reduce){t.progress(1,false);return}
+  ScrollTrigger.create({trigger:st,start:'top 70%',once:true,onEnter:function(){t.play()}});
 })();
 })();
 </script>
