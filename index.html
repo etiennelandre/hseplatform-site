@@ -858,6 +858,24 @@ svg.mk{fill:currentColor !important;stroke:none !important}
   .r,.rl,.rr{opacity:1;transform:none;transition:none}
   #parcours .jic,#parcours .jconn-f,#parcours .jstep{transition:none}
 }
+
+/* ── HERO v2 (23/11/2026) : un seul écran lisible, CTA unique ── */
+.hero h1{font-size:clamp(32px,3.3vw,50px);line-height:1.08}
+.hero .lead{font-size:17px;margin-bottom:30px}
+.hero .cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.hero-link{font-family:var(--display-2);font-size:15px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:3px;transition:border-color .2s}
+.hero-link:hover{border-color:var(--blue-2)}
+.hero-link span{color:var(--blue-2)}
+.chips2{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;max-width:620px;opacity:0;animation:rUp .8s var(--ease) .55s forwards}
+.chips2 li{padding:7px 12px;border-radius:999px;border:1px solid var(--line-dk);background:rgba(255,255,255,.04);font-size:13px;color:var(--on-ink-2)}
+.chips2 li.fr{border-color:rgba(108,157,247,.5);color:#fff}
+#c-back,#c-mid{display:none}
+#c-front{left:0!important;top:70px!important;width:760px!important;height:470px!important}
+#c-front .app{transform:scale(.81)!important}
+#h-stamp{left:380px!important;top:400px!important}
+#h-cert{left:300px!important;top:0!important}
+@media (min-width:1101px){.hero .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1320px}.hero-stage{margin-right:-140px;height:600px}}
+@media (prefers-reduced-motion:reduce){.chips2{opacity:1;animation:none}}
 </style>
 </head>
 <body>
@@ -895,18 +913,15 @@ svg.mk{fill:currentColor !important;stroke:none !important}
   <div class="ring" style="width:520px;height:520px;left:-200px;bottom:-240px"></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow">LMS d’accueil sécurité pour sites industriels</span>
-      <h1>L’accueil sécurité qui ne bloque <em>personne.</em></h1>
-      <p class="lead">Vos collaborateurs internes et externes, comme vos visiteurs, se forment avant d’arriver. Le poste de garde vérifie leur certificat en cinq secondes. Les renouvellements se relancent tout seuls. Et le jour de l’audit, tout est déjà tracé.</p>
+      <span class="eyebrow">Plateforme de formation · collaborateurs internes et externes</span>
+      <h1>Le logiciel d’accueil sécurité et d’onboarding <em>de vos sites industriels.</em></h1>
+      <p class="lead">HSEPlatform est une plateforme en ligne : vous y publiez vos accueils sécurité, vos formations et vos fiches d’onboarding. Vos collaborateurs internes et externes se forment avant d’arriver, le poste de garde vérifie leur certificat en cinq secondes, et vous gardez la preuve pour l’audit.</p>
       <div class="cta">
         <a class="btn-main" href="#contact">Réserver mon diagnostic de 30 min</a>
-        <a class="btn-ghost" href="#grille"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Suivre le parcours jusqu’à la grille</a>
+        <a class="hero-link" href="#grille">Voir le parcours en 5 écrans <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="proof">
-        <li><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5"/></svg>Internes et externes</li>
-        <li><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5"/></svg>Vérification au poste de garde</li>
-        <li><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5"/></svg>Relances de renouvellement automatiques</li>
-        <li><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5"/></svg>Export CSV pour l’audit</li>
+      <ul class="chips2">
+        <li>Accueil sécurité</li><li>Onboarding des nouveaux arrivants</li><li>Vous créez vos propres contenus</li><li>Relances automatiques</li><li>Export CSV pour l’audit</li><li class="fr">Données 100 % en France</li>
       </ul>
     </div>
     <div class="hero-stage" id="heroStage">
