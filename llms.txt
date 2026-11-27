@@ -1,0 +1,37 @@
+# HSEPlatform
+
+> HSEPlatform est le logiciel d'accueil sécurité et d'onboarding des sites industriels. Les collaborateurs internes et externes (salariés, entreprises extérieures, sous-traitants, visiteurs) suivent leur formation d'accueil avant d'arriver sur site, sur leur téléphone ou leur ordinateur. Le poste de garde vérifie le certificat en quelques secondes et chaque passage reste tracé pour les audits.
+
+HSEPlatform ne réalise pas l'accueil sécurité à la place du site : c'est une plateforme que le service HSE utilise pour mettre en ligne ses propres contenus et suivre qui est formé.
+
+Fonctionnement :
+
+- Le collaborateur reçoit un lien par e-mail avant sa venue, ou flashe un QR code à l'entrée du site, et suit la formation sur son téléphone (environ 15 minutes pour un accueil type).
+- Le service HSE met en ligne ses vidéos, ses documents et ses questionnaires (QCM avec seuil de réussite). Les documents sont lus page par page, avec lecture à voix haute. Formations et apprenants illimités.
+- Un certificat daté, avec une durée de validité, est délivré automatiquement en cas de réussite.
+- Au poste de garde, l'agent recherche la personne dans la plateforme et voit en quelques secondes si son certificat est valide.
+- La plateforme relance automatiquement le collaborateur avant l'échéance de son certificat.
+- Les données de formation s'exportent en CSV pour les audits et les contrôles.
+- Aucun matériel n'est nécessaire à l'entrée du site.
+- Les données sont hébergées en France, sur les serveurs d'OVH Cloud.
+- En cours de développement : l'export vers le Passeport de prévention.
+
+Pour qui : responsables HSE, QHSE et directeurs de sites industriels (chimie, agroalimentaire, pharmacie, métallurgie, aéronautique, énergie, sites Seveso) qui accueillent des collaborateurs internes et des entreprises extérieures.
+
+Contact : contact@hseplatform.fr. Diagnostic de votre accueil sécurité en 30 minutes sur https://hseplatform.fr/#contact
+
+## Pages principales
+
+- [Accueil HSEPlatform](https://hseplatform.fr/): présentation du logiciel, démo vidéo de 2 minutes, questions fréquentes
+- [Blog](https://hseplatform.fr/blog/): articles pour les responsables HSE des sites industriels
+
+## Articles
+
+- [Passeport de prévention : obligations des employeurs](https://hseplatform.fr/blog/passeport-de-prevention-employeurs.html): espace employeurs, délais de déclaration, impact sur les formations sécurité
+- [Accueil sur un site industriel : réussir la visite terrain](https://hseplatform.fr/blog/accueil-securite-visite-site-industriel.html): cadre légal, check-list de visite, entreprises extérieures
+- [Accueil sécurité : Google Forms, Microsoft Forms, Kahoot, LMS ou outil dédié ?](https://hseplatform.fr/blog/accueil-securite-google-forms-microsoft-forms-kahoot-lms.html): comparatif critère par critère
+- [Accueil sécurité en no-code ou outil dédié ?](https://hseplatform.fr/blog/accueil-securite-no-code-flexio-power-apps-appsheet.html): Flexio, Kizeo Forms, Power Apps, AppSheet
+- [Données d'accueil sécurité : en France ou à l'étranger ?](https://hseplatform.fr/blog/accueil-securite-donnees-hebergement-france-cloud-act.html): Cloud Act, RGPD, questions à poser à son fournisseur
+- [ISO 45001 et MASE en 2026](https://hseplatform.fr/blog/iso-45001-mase-2026.html): révision de l'ISO 45001, MASE 2024
+- [Sites Seveso : bilan 2025 de l'inspection](https://hseplatform.fr/blog/sites-seveso-bilan-inspection-2025.html): chiffres clés et priorités de contrôle 2026
+- [Glossaire de l'accueil sécurité](https://hseplatform.fr/blog/glossaire-accueil-securite.html): plan de prévention, protocole de sécurité, MASE, Seveso et autres termes
